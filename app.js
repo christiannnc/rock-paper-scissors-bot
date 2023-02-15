@@ -1,6 +1,6 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 
-const client = new Discord.Client({
+const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -18,4 +18,21 @@ client.on('message', (message) => {
   message.channel.send(message.content);
 });
 
+const express = require("express");
+const app = express();
+
+const http = require("http");
+const server = http.createServer(app);
+
+app.all("/", (req, res) => {
+    res.end();
+});
+
+function keepAlive() {
+    server.listen(3000, () => {
+        console.log("Server is online!");
+    });
+}
+
+keepAlive();
 client.login(token);
