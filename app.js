@@ -1,22 +1,3 @@
-const { Client, GatewayIntentBits } = require("discord.js");
-
-const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
-});
-
-const token =
-    "MTA3NTI2ODUwNDUyNzMyMzE2Ng.Gi9vGw.2HxSZl6Fc5MQdRrxH2yaXDdrFgadiFtAs3h8b4";
-
-client.on("ready", () => {
-    console.log("Bot is now connected");
-});
-
-client.on("message", (message) => {
-    if (message.author.bot) return;
-    message.channel.send(message.content);
-    console.log(message);
-});
-
 const express = require("express");
 const app = express();
 
@@ -32,6 +13,28 @@ function keepAlive() {
         console.log("Server is online!");
     });
 }
+
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+    ],
+});
+
+const token =
+    "MTA3NTI2ODUwNDUyNzMyMzE2Ng.GMgf7r.-XDO0ZsUTY4zI3Wu4JpkfX56dlnn38OWd-VFfU";
+
+client.on("ready", () => {
+    console.log("Bot is now connected");
+});
+
+client.on("messageCreate", async (message) => {
+    if (message?.author.bot) return;
+    message.channel.send(message.content);
+});
 
 keepAlive();
 client.login(token);
