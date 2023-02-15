@@ -1,1 +1,1 @@
-Worker: /app.js
+Worker: ./app.js
