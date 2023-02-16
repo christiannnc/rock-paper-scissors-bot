@@ -33,7 +33,7 @@ client.on("ready", () => {
 client.on("messageCreate", async (message) => {
     if (message?.author.bot) return;
     message.delete();
-    message.channel.send(message.content);
+    message.channel.send(message.content + `${message.author}`);
 });
 
 keepAlive();
