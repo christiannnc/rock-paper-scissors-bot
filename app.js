@@ -24,7 +24,7 @@ const client = new Client({
 });
 
 const token =
-    "MTA3NTI2ODUwNDUyNzMyMzE2Ng.GMgf7r.-XDO0ZsUTY4zI3Wu4JpkfX56dlnn38OWd-VFfU";
+    "MTA3NTYzNzgwNTY5MjIzOTk0Mw.GQ43EI.cTw0CouBQd80AsE_HV2AxKGKz0dRUKlbssOuG4";
 
 client.on("ready", () => {
     console.log("Bot is now connected");
@@ -33,7 +33,11 @@ client.on("ready", () => {
 client.on("messageCreate", async (message) => {
     if (message?.author.bot) return;
     
-    message.channel.send(message.content);
+    if(message.content.toLowerCase() === "rock" || message.content.toLowerCase() === "scissors" || message.content.toLowerCase() === "paper") {
+        const options = ['rock', 'paper', 'scissors'];
+        const choice = options[Math.floor(Math.random() * options.length)];
+        message.channel.send(`i chose ${choice}`);
+    }
 });
 
 keepAlive();
