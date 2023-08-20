@@ -23,9 +23,7 @@ const client = new Client({
     ],
 });
 
-const token =
-    "MTA3NTYzNzgwNTY5MjIzOTk0Mw.GQ43EI.cTw0CouBQd80AsE_HV2AxKGKz0dRUKlbssOuG4";
-
+const token = // token from .env goes here
 client.on("ready", () => {
     console.log("Bot is now connected");
 });
